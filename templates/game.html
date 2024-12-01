@@ -1,0 +1,60 @@
+<!-- Page for games that user clicks into
+
+This is the page for a singular game.
+
+The name, cover art, genre, description, and metacritic score will be displayed.
+I will definitely consider more as the project progresses towards the finished product.
+
+-->
+{% extends "base.html" %}
+{% block content %}
+
+<img src={{input_game["background_image"]}} alt="images" style="width:500px;height:400px">
+
+<p>
+    <h2>{{input_game["name"]}}</h2>
+</p>
+
+<p>
+    <b>Genres: </b> {{input_game["genres"][0]["name"]}}
+    {% for genre in input_game["genres"] %}
+    {% if input_game["genres"].index(genre) != 0 %}
+
+    , {{genre["name"]}}
+
+    {% endif %}
+    {% endfor %}
+
+    <br>
+
+    <b>Release Date: </b>{{input_game["released"]}}<br>
+    <b>Metacritic Score: </b>{{input_game["metacritic"]}}<br>
+</p>
+
+<p>
+    <b>Description:</b> {{input_game["description_raw"]}}
+</p>
+
+<p>
+    <b>Developers: </b> {{input_game["developers"][0]["name"]}}
+    {% for developer in input_game["developers"] %}
+    {% if input_game["developers"].index(developer) != 0 %}
+
+    , {{developer["name"]}}
+
+    {% endif %}
+    {% endfor %}
+
+    <br>
+
+    <b>Platforms: </b> {{input_game["platforms"][0]["platform"]["name"]}}
+    {% for platform in input_game["platforms"] %}
+    {% if input_game["platforms"].index(platform) != 0 %}
+
+    , {{platform["platform"]["name"]}}
+
+    {% endif %}
+    {% endfor %}
+</p>
+
+{% endblock %}

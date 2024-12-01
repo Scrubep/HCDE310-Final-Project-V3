@@ -1,0 +1,60 @@
+<!-- results page for user's search
+
+Display their most played games with hours and their favorite genres
+based on those games.
+
+There will be games displayed here in a row and column format.
+
+Each game will have its cover art as well as its name displayed.
+
+Each game will also be clickable which will lead to game.html
+
+-->
+{% extends "base.html" %}
+{% block content %}
+<p>
+<h2>Your top Games and Playtimes:</h2>
+{% for game in playtimes %}
+<li>
+    <b>{{game}}: </b>{{playtimes[game]}} mins
+</li>
+{% endfor %}
+</p>
+
+<p>
+<table>
+{% for game in game_list %}
+    {% if game_list.index(game) == 0 or game_list.index(game) % 5 == 0 %}
+    <tr>
+        <td>
+            <form action="/game" method="post">
+            <button type="submit" name="input_game" value="{{game['slug']}}">
+                <img src={{game["background_image"]}} alt="images" style="width:250px;height:200px"><br>
+            {{game["name"]}}
+            </button>
+            </form>
+        </td>
+    {% elif (game_list.index(game) - 1) % 5 == 4 %}
+        <td>
+            <form action="/game" method="post">
+            <button type="submit" name="input_game" value="{{game['slug']}}">
+                <img src={{game["background_image"]}} alt="images" style="width:250px;height:200px"><br>
+            {{game["name"]}}
+            </button>
+            </form>
+        </td>
+    </tr>
+    {% else %}
+    <td>
+        <form action="/game" method="post">
+        <button type="submit" name="input_game" value="{{game['slug']}}">
+            <img src={{game["background_image"]}} alt="images" style="width:250px;height:200px"><br>
+            {{game["name"]}}
+        </button>
+        </form>
+    </td>
+    {% endif %}
+    {% endfor %}
+</table>
+</p>
+{% endblock %}

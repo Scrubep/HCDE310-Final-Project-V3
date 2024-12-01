@@ -1,0 +1,36 @@
+<!-- form html page for user input
+
+This will be the screen that users start with.
+
+Will contain a brief description for users at the top.
+
+There will be a form submission for the users steam id with an example.
+
+Below will be a submit form which will redirect to results.html.
+
+-->
+{% extends "base.html" %}
+{% block content %}
+<p>
+    Welcome to the Personalized Video Game Recommender!
+
+    All you have to do is put in your steam id, a 17 digit user id that comes with
+    every steam account (e.g. 76561197960434622). After writing your id, put down
+    the number of recommendations you'd like.
+
+    Press submit and get your recommendations!
+</p>
+<form action="/results" method="post">
+    <p>
+        <label for="user_id">Steam ID</label><br>
+        <input type="text" id="user_id" name="steam_id">
+    </p>
+    <p>
+        <label for="num_results">Number of Results</label><br>
+        <input type="number" id="num_results" name="input_page" value="10">
+    </p>
+    <p>
+        <input type="submit" value="Submit">
+    </p>
+</form>
+{% endblock %}
