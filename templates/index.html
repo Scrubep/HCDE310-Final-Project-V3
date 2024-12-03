@@ -12,13 +12,19 @@ Below will be a submit form which will redirect to results.html.
 {% extends "base.html" %}
 {% block content %}
 <p>
-    Welcome to the Personalized Video Game Recommender!
+    Welcome to your Personal Video Game Recommender! There's just three simple steps you need to take
+    before getting your recommendations.<br><br>
 
-    All you have to do is put in your steam id, a 17 digit user id that comes with
+    1. Make sure that your Steam inventory setting is public. You can do this through Steam by clicking on
+    your account name at the top right, go to "view my profile," click edit profile, and then set
+    your profile and inventory to public. <br><br>
+
+    2. Now all you have to do is put in your steam id, a 17 digit user id that comes with
     every steam account (e.g. 76561197960434622). After writing your id, put down
-    the number of recommendations you'd like.
+    the number of recommendations you'd like. If you put a weird number like 0 or a negative, the default
+    will be 20.<br><br>
 
-    Press submit and get your recommendations!
+    3. Press submit and get your recommendations!
 </p>
 <form action="/results" method="post">
     <p>

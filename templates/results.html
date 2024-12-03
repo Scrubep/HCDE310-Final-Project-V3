@@ -12,17 +12,14 @@ Each game will also be clickable which will lead to game.html
 -->
 {% extends "base.html" %}
 {% block content %}
-<p>
-<h2>Your top Games and Playtimes:</h2>
+<ul>
+    <h2>Your Top Games and Playtimes:</h2>
 {% for game in playtimes %}
-<li>
-    <b>{{game}}: </b>{{playtimes[game]}} mins
-</li>
+    <b>{{game}}: </b>{{playtimes[game]}} mins<br>
 {% endfor %}
-</p>
+</ul>
 
-<p>
-<table>
+<table class="table_center">
 {% for game in game_list %}
     {% if game_list.index(game) == 0 or game_list.index(game) % 5 == 0 %}
     <tr>
@@ -54,7 +51,7 @@ Each game will also be clickable which will lead to game.html
         </form>
     </td>
     {% endif %}
-    {% endfor %}
+{% endfor %}
 </table>
-</p>
+
 {% endblock %}

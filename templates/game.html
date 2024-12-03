@@ -9,14 +9,16 @@ I will definitely consider more as the project progresses towards the finished p
 {% extends "base.html" %}
 {% block content %}
 
-<img src={{input_game["background_image"]}} alt="images" style="width:500px;height:400px">
+<img src={{input_game["background_image"]}} alt="images" style="width:600px;height:500px;margin-left:150px">
+
+{% if input_game["background_image_additional"] != null %}
+<img src={{input_game["background_image_additional"]}} alt="images" style="width:600px;height:500px">
+{% endif %}
+
+    <h2 style="margin-left:150px">{{input_game["name"]}}</h2>
 
 <p>
-    <h2>{{input_game["name"]}}</h2>
-</p>
-
-<p>
-    <b>Genres: </b> {{input_game["genres"][0]["name"]}}
+    <b>Genres: </b>{{input_game["genres"][0]["name"]}}
     {% for genre in input_game["genres"] %}
     {% if input_game["genres"].index(genre) != 0 %}
 
@@ -28,7 +30,7 @@ I will definitely consider more as the project progresses towards the finished p
     <br>
 
     <b>Release Date: </b>{{input_game["released"]}}<br>
-    <b>Metacritic Score: </b>{{input_game["metacritic"]}}<br>
+    <b>Metacritic Score: </b>{{input_game["metacritic"]}}
 </p>
 
 <p>

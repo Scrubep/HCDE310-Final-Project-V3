@@ -24,6 +24,14 @@ def results():
     if request.method == 'POST':
         steam_id = request.form['steam_id']
         data = create_steam_data(steam_id)
+        if data is None:
+            return ("<h2>ERROR:</h2>"
+                    "<p>Check if you put in the correct steam ID and try again!</p>")
+
+        if len(data["response"]) == 0:
+            return ("<h2>Oops! Doesn't look like you have any games in your library.</h2>"
+                    "<p>Try a different account!</p>")
+
         playtimes = sort_playtimes(data)
 
         counter = 0
@@ -39,6 +47,9 @@ def results():
 
         return render_template('results.html', counter=0, playtimes=top_playtimes, game_list=list)
 
+    elif request.method == 'GET':
+        return "<b>Error 404:<b> HTTP Error"
+
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     if request.method == 'POST':
@@ -46,3 +57,6 @@ def game():
         input_game = individual_game_data(input_game_slug)
 
         return render_template('game.html', input_game=input_game)
+
+    elif request.method == 'GET':
+        return "<b>Error 404:<b> HTTP Error"

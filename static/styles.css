@@ -1,7 +1,49 @@
 h1 {
     text-align: center;
+    font-family: "Verdana";
+}
+
+h2 {
+    font-family: "Verdana";
 }
 
 footer {
     text-align: center;
+    margin-top: 50px;
+    font-family: "Verdana";
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+p {
+    margin-left: 150px;
+    margin-right: 150px;
+    font-family: "Calibri";
+}
+
+.table_center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    text-align: center;
+    font-family: "Calibri";
+}
+
+input[type="submit"] {
+    font-family: "Calibri"
+}
+
+button[type="submit"] {
+    font-family: "Calibri"
+}
+
+body {
+    background-color: floralwhite;
 }

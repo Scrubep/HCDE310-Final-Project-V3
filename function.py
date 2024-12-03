@@ -7,18 +7,13 @@ import keys
 def create_json_data(base_url, parameters):
     param_str = urllib.parse.urlencode(parameters)
     request_url = base_url + "?" + param_str
+    # print(request_url) # Testing purposes
     f = urllib.request.urlopen(request_url)
     json_url = ''
     for line in f:
         json_url += line.decode()
     json_data = json.loads(json_url)
     return json_data
-
-def strip_word_punctuation(word):
-    # Note - this function is far from comprehensive, and so some punctuation may
-    # still make it through
-    word = word.replace("&lt;","<").replace("&gt;",">").replace("&amp;","&")
-    return word.strip("&=.,()<>\"\\'~?!;*:[]-+_/`\u2014\u2018\u2019\u201c\u201d\u200b").replace("\"","\"\"")
 
 # Converts name into something that is readable by RAWG.
 def name_convert(name):
@@ -31,7 +26,7 @@ def name_convert(name):
 # Finds the info of individual games using RAWG.
 def individual_game_data(name):
     if " " in name:
-        name = strip_word_punctuation(name_convert(name))
+        name = name_convert(name)
     base_url = "https://api.rawg.io/api/games/" + name
     return create_json_data(base_url, {"key": keys.RAWG_key})
 
@@ -79,7 +74,7 @@ def most_played_genres(steam_id):
         return genres_list
 
     steam_data = sort_playtimes(data)
-    counter = 0;
+    counter = 0
     for game in steam_data:
         if counter < 5:
             game_info = individual_game_data(game)
@@ -142,6 +137,3 @@ def find_recommendations_steam(steam_id, page_size=10):
 # list = find_recommendations_steam("76561199388773489") # Anonymous J
 # list = find_recommendations_steam("76561199202887189") # Anonymous L
 # list = find_recommendations_steam("76561197960434622") # Random dude
-# print("----------------------------")
-# for game in list:
-#     print(game.title)
