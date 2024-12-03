@@ -40,6 +40,18 @@ input[type="submit"] {
     font-family: "Calibri"
 }
 
+input[type="text"] {
+    font-family: "Calibri";
+    width: 25%;
+    margin: 8px 0;
+}
+
+input[type="number"] {
+    font-family: "Calibri";
+    width: 25%;
+    margin: 8px 0;
+}
+
 button[type="submit"] {
     font-family: "Calibri"
 }

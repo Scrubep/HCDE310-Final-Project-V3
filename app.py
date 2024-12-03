@@ -30,7 +30,7 @@ def results():
 
         if len(data["response"]) == 0:
             return ("<h2>Oops! Doesn't look like you have any games in your library.</h2>"
-                    "<p>Try a different account!</p>")
+                    "<p>Check if your inventory is public or try a different account!</p>")
 
         playtimes = sort_playtimes(data)
 
